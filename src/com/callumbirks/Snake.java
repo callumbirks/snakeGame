@@ -7,15 +7,21 @@ import java.util.List;
 
 public class Snake {
     public static final int PIXEL_SIZE = 20;
-    private int size;
+    private int mSize;
     private Direction mDirection;
     private List<int[]> mSnakeParts;
 
     public Snake() {
-        size = 1;
+        mSize = 1;
         mDirection = Direction.RIGHT;
         mSnakeParts = new ArrayList<>();
         mSnakeParts.add(new int[]{100, 100});
+    }
+
+    public Snake(int size, Direction direction, List<int[]> snakeParts) {
+        mSize = size;
+        mDirection = direction;
+        mSnakeParts = snakeParts;
     }
 
     public int getX() {
@@ -26,12 +32,12 @@ public class Snake {
         return mSnakeParts.get(0)[1];
     }
 
-    public int getSize() {
-        return size;
+    public int getmSize() {
+        return mSize;
     }
 
     public void eat() throws IllegalArgumentException {
-        this.size++;
+        this.mSize++;
         int[] coords;
         if(mSnakeParts.size() > 3) {
             Direction lastPartDirection = null;
@@ -68,13 +74,11 @@ public class Snake {
     }
 
     public void move() {
-        int[] lastCoord = mSnakeParts.get(0);
-        int[] coords;
         switch (mDirection) {
             case UP -> {
                 for(int i = mSnakeParts.size() - 1; i >= 0; i--) {
                     if(i == 0)
-                        mSnakeParts.get(i)[1] -= PIXEL_SIZE;
+                        mSnakeParts.get(i)[1] -= (PIXEL_SIZE);
                     else {
                         mSnakeParts.get(i)[0] = mSnakeParts.get(i - 1)[0];
                         mSnakeParts.get(i)[1] = mSnakeParts.get(i - 1)[1];
@@ -85,7 +89,7 @@ public class Snake {
             case RIGHT -> {
                 for(int i = mSnakeParts.size() - 1; i >= 0; i--) {
                     if(i == 0)
-                        mSnakeParts.get(i)[0] += PIXEL_SIZE;
+                        mSnakeParts.get(i)[0] += (PIXEL_SIZE);
                     else {
                         mSnakeParts.get(i)[0] = mSnakeParts.get(i - 1)[0];
                         mSnakeParts.get(i)[1] = mSnakeParts.get(i - 1)[1];
@@ -96,7 +100,7 @@ public class Snake {
             case DOWN -> {
                 for(int i = mSnakeParts.size() - 1; i >= 0; i--) {
                     if(i == 0)
-                        mSnakeParts.get(i)[1] += PIXEL_SIZE;
+                        mSnakeParts.get(i)[1] += (PIXEL_SIZE);
                     else {
                         mSnakeParts.get(i)[0] = mSnakeParts.get(i - 1)[0];
                         mSnakeParts.get(i)[1] = mSnakeParts.get(i - 1)[1];
@@ -106,7 +110,7 @@ public class Snake {
             case LEFT -> {
                 for(int i = mSnakeParts.size() - 1; i >= 0; i--) {
                     if(i == 0)
-                        mSnakeParts.get(i)[0] -= PIXEL_SIZE;
+                        mSnakeParts.get(i)[0] -= (PIXEL_SIZE);
                     else {
                         mSnakeParts.get(i)[0] = mSnakeParts.get(i - 1)[0];
                         mSnakeParts.get(i)[1] = mSnakeParts.get(i - 1)[1];

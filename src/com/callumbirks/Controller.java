@@ -13,6 +13,7 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.util.Duration;
 
+import javax.swing.*;
 import java.util.List;
 import java.util.Random;
 
@@ -30,9 +31,7 @@ public class Controller {
     private Snake snakeObj;
     private GraphicsContext gc;
     private int[] mFoodPos;
-
-    public Controller() {
-    }
+    private Random rand = new Random();
 
     private void resetTimeline() {
         if (mTimeline != null && mTimeline.getStatus() == Animation.Status.RUNNING)
@@ -97,7 +96,6 @@ public class Controller {
     }
 
     public void generateFood() {
-        Random rand = new Random();
         int[] foodPos;
         do {
             foodPos = new int[]{(rand.nextInt(
