@@ -18,12 +18,6 @@ public class Snake {
         mSnakeParts.add(new int[]{100, 100});
     }
 
-    public Snake(int size, Direction direction, List<int[]> snakeParts) {
-        mSize = size;
-        mDirection = direction;
-        mSnakeParts = snakeParts;
-    }
-
     public int getX() {
         return mSnakeParts.get(0)[0];
     }
@@ -32,7 +26,7 @@ public class Snake {
         return mSnakeParts.get(0)[1];
     }
 
-    public int getmSize() {
+    public int getSize() {
         return mSize;
     }
 
