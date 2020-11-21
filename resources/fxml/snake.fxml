@@ -1,26 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Text?>
-<?import javafx.scene.layout.StackPane?>
-
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.canvas.Canvas?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Text?>
 <StackPane fx:id="container" stylesheets="/css/snake.css" onKeyPressed="#handleKeyPress"
            xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1"
            fx:controller="com.callumbirks.Controller">
-    <StackPane fx:id = "gamePane" styleClass="state-playing">
+    <StackPane styleClass="state-playing">
         <Canvas fx:id="gameCanvas" width="800" height="500" />
     </StackPane>
     <StackPane styleClass="state-menu">
         <VBox fx:id="vBox1">
             <Text fx:id="menuTitle" text="SNAKE"/>
             <VBox fx:id="vBox2">
-                <Button onAction="#playGame" text="Play"/>
+                <Button onAction="#btnPlayGame" text="Play"/>
                 <Button onAction="#showHighScores" text="High Scores"/>
                 <Button onAction="#quit" text="Quit"/>
             </VBox>
