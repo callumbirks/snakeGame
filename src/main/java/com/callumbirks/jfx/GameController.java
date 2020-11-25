@@ -1,6 +1,5 @@
 package com.callumbirks.jfx;
 
-import com.callumbirks.snake.Direction;
 import com.callumbirks.snake.Game;
 import com.callumbirks.snake.SnakePart;
 import javafx.animation.KeyFrame;
@@ -11,9 +10,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.util.Duration;
 
@@ -48,7 +45,7 @@ public class GameController implements Initializable {
             if (game.isSnakeCrashed()) pauseTimeline();
             if (game.isSnakeAtFood()) game.eat();
             canvas.requestFocus();
-            game.moveSnake();
+            if(timeline.getStatus() == Timeline.Status.RUNNING) game.moveSnake();
             render();
             setScoreText(String.valueOf(game.getScore()));
         }));
