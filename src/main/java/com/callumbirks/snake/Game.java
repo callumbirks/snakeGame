@@ -7,6 +7,7 @@ import java.util.Random;
 public class Game {
     private com.callumbirks.snake.Snake snake;
     private Food food;
+    private int score;
     private final int WIDTH;
     private final int HEIGHT;
     private static final Random rand = new Random();
@@ -17,6 +18,7 @@ public class Game {
         HEIGHT = height;
         food = new Food();
         food.setPos(generateFoodPos());
+        score = 0;
     }
 
     public void moveSnake() {
@@ -27,6 +29,11 @@ public class Game {
     public void eat() {
         snake.eat();
         food.setPos(generateFoodPos());
+        score++;
+    }
+
+    public int getScore() {
+        return score;
     }
 
     public boolean isSnakeCrashed() {

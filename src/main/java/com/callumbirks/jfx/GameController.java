@@ -5,6 +5,8 @@ import com.callumbirks.snake.Game;
 import com.callumbirks.snake.SnakePart;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.canvas.Canvas;
@@ -25,6 +27,7 @@ public class GameController implements Initializable {
 
     private static final int PIXEL_SIZE = 20;
 
+    private StringProperty scoreText = new SimpleStringProperty();
     private Game game;
     private Timeline timeline;
 
@@ -37,6 +40,7 @@ public class GameController implements Initializable {
 
         game = new Game(width, height, PIXEL_SIZE);
 
+        setScoreText("0");
 
         timeline = new Timeline();
         timeline.setCycleCount(Timeline.INDEFINITE);
@@ -46,6 +50,7 @@ public class GameController implements Initializable {
             canvas.requestFocus();
             game.moveSnake();
             render();
+            setScoreText(String.valueOf(game.getScore()));
         }));
         timeline.play();
         canvas.requestFocus();
@@ -75,5 +80,17 @@ public class GameController implements Initializable {
 
     public void handleKeyPress(KeyEvent keyEvent) {
         game.changeDirection(keyEvent.getCode());
+    }
+
+    public String getScoreText() {
+        return scoreText.get();
+    }
+
+    public StringProperty scoreTextProperty() {
+        return scoreText;
+    }
+
+    public void setScoreText(String scoreText) {
+        this.scoreText.set(scoreText);
     }
 }
