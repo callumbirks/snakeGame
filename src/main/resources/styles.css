@@ -1,5 +1,5 @@
 .stackpane {
-    -fx-alignment:center;
+    -fx-alignment:top-center;
     -fx-background-color:BLACK;
 }
 
@@ -16,4 +16,9 @@
 .title {
     -fx-fill:LIME;
     -fx-font-size:68px;
+}
+
+.score-text {
+    -fx-font-size:32px;
+    -fx-fill:WHITE;
 }
