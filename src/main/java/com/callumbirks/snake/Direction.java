@@ -1,8 +1,8 @@
-package com.callumbirks;
+package com.callumbirks.snake;
 
 public enum Direction {
     UP,
     RIGHT,
     DOWN,
-    LEFT;
+    LEFT
 }
