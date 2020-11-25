@@ -62,19 +62,19 @@ public class Game {
 
     public void changeDirection(KeyCode code) {
         switch(code) {
-            case UP,W -> {
+            case UP -> {
                 if (!(snake.getDirection() == Direction.DOWN))
                     snake.setDirection(Direction.UP);
             }
-            case RIGHT,D -> {
+            case RIGHT -> {
                 if(!(snake.getDirection() == Direction.LEFT))
                     snake.setDirection(Direction.RIGHT);
             }
-            case DOWN,S -> {
+            case DOWN -> {
                 if(!(snake.getDirection() == Direction.UP))
                     snake.setDirection(Direction.DOWN);
             }
-            case LEFT,A -> {
+            case LEFT -> {
                 if(!(snake.getDirection() == Direction.RIGHT))
                     snake.setDirection(Direction.LEFT);
             }
@@ -82,10 +82,10 @@ public class Game {
     }
 
     private boolean isSnakeInBounds() {
-        return (snake.getX() >= 0 &&
-                snake.getY() >= 0 &&
-                snake.getX() <= WIDTH - 1 &&
-                snake.getY() <= HEIGHT - 1);
+        return !(snake.getX() < 0 ||
+                snake.getY() < 0 ||
+                snake.getX() > WIDTH - 1 ||
+                snake.getY() > HEIGHT - 1);
     }
 
     private int[] generateFoodPos() {
